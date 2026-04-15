@@ -11,21 +11,22 @@ body {
 }
 
 :root {
-  --bg: #4f86f7;
-  --ink: #222220;
-  --paper: #ece9de;
-  --inner-ink: rgba(34, 34, 32, 0.78);
-  --olive: #a8b56b;
-  --pink: #d8b6c9;
+  --bg: #59afe3;
+  --ink: rgba(28, 28, 26, 0.92);
+  --ink-soft: rgba(28, 28, 26, 0.72);
+  --paper: #ece9df;
+  --olive: #69bf63;
+  --pink: #df4f9d;
+  --hover-yellow: #fecf43;
 }
 
 body {
   min-height: 100vh;
   display: grid;
   place-items: center;
-  padding: 32px;
-  overflow-x: hidden;
+  padding: 24px;
   position: relative;
+  overflow-x: hidden;
 
   font-family: "Avenir", "Helvetica Neue", Arial, sans-serif;
   text-transform: lowercase;
@@ -33,107 +34,120 @@ body {
   background: var(--bg);
 }
 
-/* grain overlay - a bit stronger now */
+/* base grain from grain.png – slightly stronger */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
 
-  background-image: url("grain.png");
-  background-repeat: repeat;
-  background-size: 165px 165px;
+  background: url("grain.png") center / 220px 220px repeat;
 
-  opacity: 0.06;
-  mix-blend-mode: multiply;
+  opacity: 0.09;
+  mix-blend-mode: soft-light;
 }
 
-/* page wrapper */
+/* coloured noise layer to break the regular pattern */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  opacity: 0.18;
+
+  background-image:
+    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.17) 0, transparent 52%),
+    radial-gradient(circle at 80% 0%, rgba(0, 80, 255, 0.18) 0, transparent 55%),
+    radial-gradient(circle at 0% 100%, rgba(255, 255, 255, 0.12) 0, transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(0, 40, 140, 0.2) 0, transparent 50%);
+}
+
+/* layout */
 .container {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-/* main card */
+/* smaller card */
 .card {
-  width: min(560px, 100%);
+  width: min(430px, 100%);
   background: var(--paper);
-  border: 2px solid rgba(34, 34, 32, 0.9);
-  padding: 20px;
+  border: 1px solid var(--ink);
+  padding: 18px 18px 20px;
   position: relative;
 
-  /* slightly fuzzy / soft shadowed edges */
   box-shadow:
-    0 0 0 0.4px rgba(34, 34, 32, 0.6),
-    0 3px 0 rgba(34, 34, 32, 0.22),
-    5px 7px 0 rgba(34, 34, 32, 0.18),
-    7px 10px 14px rgba(34, 34, 32, 0.14);
+    0 0 0 0.35px rgba(28, 28, 26, 0.45),
+    3px 3px 0 rgba(28, 28, 26, 0.14),
+    5px 6px 10px rgba(28, 28, 26, 0.1);
 }
 
-/* inner frame lines live INSIDE the card */
+/* vertical inner lines */
 .card::before {
   content: "";
   position: absolute;
-  top: 12px;
-  left: 12px;
-  right: 12px;
-  bottom: 108px; /* leaves space before buttons */
-  border-left: 2px solid var(--inner-ink);
-  border-right: 2px solid var(--inner-ink);
+  left: 14px;
+  right: 14px;
+  top: 14px;
+  bottom: 58px; /* stop above button row */
+  border-left: 1px solid var(--ink-soft);
+  border-right: 1px solid var(--ink-soft);
   pointer-events: none;
-
-  filter: blur(0.15px);
-  opacity: 0.96;
+  filter: blur(0.2px);
 }
 
-/* top and bottom split lines inside the card */
+/* top line + 3-part bottom line */
 .card::after {
   content: "";
   position: absolute;
-  top: 12px;
-  left: 12px;
-  right: 12px;
-  bottom: 108px;
+  left: 14px;
+  right: 14px;
+  top: 14px;
+  bottom: 58px;
   pointer-events: none;
-
+  filter: blur(0.2px);
   background:
-    linear-gradient(var(--inner-ink), var(--inner-ink)) top left / calc(50% - 68px) 2px no-repeat,
-    linear-gradient(var(--inner-ink), var(--inner-ink)) top right / calc(50% - 68px) 2px no-repeat,
-    linear-gradient(var(--inner-ink), var(--inner-ink)) bottom left / calc(50% - 86px) 2px no-repeat,
-    linear-gradient(var(--inner-ink), var(--inner-ink)) bottom right / calc(50% - 86px) 2px no-repeat;
+    /* top full-ish line */
+    linear-gradient(var(--ink-soft), var(--ink-soft)) top center / 100% 1px no-repeat,
 
-  filter: blur(0.15px);
-  opacity: 0.96;
+    /* bottom left segment */
+    linear-gradient(var(--ink-soft), var(--ink-soft)) bottom left / 40px 1px no-repeat,
+
+    /* bottom middle tiny segment */
+    linear-gradient(var(--ink-soft), var(--ink-soft)) bottom center / 24px 1px no-repeat,
+
+    /* bottom right segment */
+    linear-gradient(var(--ink-soft), var(--ink-soft)) bottom right / 40px 1px no-repeat;
 }
 
-/* content block */
 .inner {
   position: relative;
   z-index: 1;
-  padding: 34px 34px 30px;
-  margin-bottom: 16px;
+  padding: 22px 20px 18px;
+  margin-bottom: 14px;
 }
 
 h1 {
-  margin: 0 0 12px;
-  font-size: clamp(2rem, 3vw, 2.7rem);
-  line-height: 1.02;
+  margin: 0 0 8px;
+  font-size: 1.05rem;
+  line-height: 1.1;
   font-weight: 500;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.01em;
 }
 
 .subtitle {
-  margin: 0 0 18px;
-  font-size: 1rem;
-  color: rgba(34, 34, 32, 0.62);
+  margin: 0 0 12px;
+  font-size: 0.78rem;
+  color: rgba(28, 28, 26, 0.58);
 }
 
 .bio {
   margin: 0;
-  max-width: 24ch;
-  font-size: 1rem;
-  line-height: 1.55;
+  max-width: 26ch;
+  font-size: 0.82rem;
+  line-height: 1.42;
 }
 
 .bio a {
@@ -142,33 +156,32 @@ h1 {
   text-underline-offset: 0.08em;
 }
 
-/* button row */
 .buttons {
   position: relative;
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
+  padding-inline: 38px; /* pulls buttons inward so border segments show */
 }
 
-/* little buttons/cards */
 .btn {
-  min-height: 86px;
+  min-height: 54px;
   display: grid;
   place-items: center;
   text-decoration: none;
   color: var(--ink);
-  font-size: 1rem;
-  border: 2px solid rgba(34, 34, 32, 0.72);
+  font-size: 0.78rem;
+  border: 1px solid rgba(28, 28, 26, 0.55);
 
   box-shadow:
-    0 0 0 0.4px rgba(34, 34, 32, 0.35),
-    0 2px 0 rgba(34, 34, 32, 0.12);
+    0 0 0 0.35px rgba(28, 28, 26, 0.28),
+    0 1px 0 rgba(28, 28, 26, 0.1);
 
   transform: scale(1);
   transition:
     background-color 180ms ease,
-    transform 180ms cubic-bezier(0.2, 0.9, 0.2, 1.15),
+    transform 180ms cubic-bezier(0.2, 0.9, 0.2, 1.12),
     box-shadow 180ms ease,
     filter 180ms ease;
 }
@@ -182,66 +195,53 @@ h1 {
 }
 
 .btn:hover {
-  background: #fecf43;
+  background: var(--hover-yellow);
   transform: translateY(-1px) scale(1.015, 0.985);
   box-shadow:
-    0 0 0 0.4px rgba(34, 34, 32, 0.35),
-    0 3px 0 rgba(34, 34, 32, 0.16);
-  filter: saturate(1.02);
+    0 0 0 0.35px rgba(28, 28, 26, 0.28),
+    0 2px 0 rgba(28, 28, 26, 0.14);
 }
 
 .btn:active {
   transform: translateY(1px) scale(0.985, 0.96);
   box-shadow:
-    0 0 0 0.4px rgba(34, 34, 32, 0.28),
-    0 1px 0 rgba(34, 34, 32, 0.1);
+    0 0 0 0.35px rgba(28, 28, 26, 0.22),
+    0 1px 0 rgba(28, 28, 26, 0.08);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 520px) {
   body {
-    padding: 20px;
+    padding: 18px;
   }
 
   .card {
-    padding: 16px;
+    width: min(390px, 100%);
+    padding: 15px 15px 18px;
   }
 
   .card::before,
   .card::after {
-    top: 10px;
-    left: 10px;
-    right: 10px;
-    bottom: 92px;
-  }
-
-  .card::after {
-    background:
-      linear-gradient(var(--inner-ink), var(--inner-ink)) top left / calc(50% - 52px) 2px no-repeat,
-      linear-gradient(var(--inner-ink), var(--inner-ink)) top right / calc(50% - 52px) 2px no-repeat,
-      linear-gradient(var(--inner-ink), var(--inner-ink)) bottom left / calc(50% - 68px) 2px no-repeat,
-      linear-gradient(var(--inner-ink), var(--inner-ink)) bottom right / calc(50% - 68px) 2px no-repeat;
+    left: 11px;
+    right: 11px;
+    top: 11px;
+    bottom: 52px;
   }
 
   .inner {
-    padding: 26px 22px 22px;
-    margin-bottom: 12px;
-  }
-
-  h1 {
-    font-size: clamp(1.8rem, 8vw, 2.3rem);
-  }
-
-  .bio {
-    max-width: 100%;
-    font-size: 0.98rem;
+    padding: 18px 16px 14px;
   }
 
   .buttons {
     gap: 10px;
+    padding-inline: 28px;
   }
 
   .btn {
-    min-height: 70px;
-    font-size: 0.95rem;
+    min-height: 48px;
+    font-size: 0.74rem;
+  }
+
+  .bio {
+    max-width: 100%;
   }
 }
