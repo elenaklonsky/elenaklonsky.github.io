@@ -1,4 +1,3 @@
-/* Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,150 +9,140 @@ body {
   text-transform: lowercase;
 
   min-height: 100vh;
-
   display: flex;
   align-items: center;
   justify-content: center;
 
-  /* Base color */
   background: #508BFC;
-
   position: relative;
 }
 
-/* Grain overlay */
+/* subtle grain */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
 
   background: url("grain.png");
-  background-size: cover;
+  background-size: 400%;
 
   mix-blend-mode: multiply;
-  opacity: 0.25;
+  opacity: 0.06;
+
+  filter: blur(0.4px);
 
   pointer-events: none;
 }
 
-/* Container */
+/* layout container */
 .container {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-/* Card */
+/* outer card */
 .card {
   width: 90%;
-  max-width: 340px;
+  max-width: 360px;
 
   background: #EFE9DC;
 
   position: relative;
+  padding: 18px 18px 20px 18px;
 
-  border: 2px solid #191A1A;
+  border: 2px solid #191a1a;
 
-  /* Slight softness */
+  /* sketchy softness */
   box-shadow:
-    0 0 0 0.5px rgba(25,26,26,0.6),
-    0 0 1px rgba(25,26,26,0.3);
-
-  display: flex;
-  flex-direction: column;
+    0 0 0 0.5px rgba(25,26,26,0.5),
+    0 2px 3px rgba(25,26,26,0.2),
+    0 0 2px rgba(25,26,26,0.3);
 }
 
-/* Inner border */
-.card::after {
+/* slight imperfection */
+.card {
+  transform: rotate(0.05deg);
+}
+
+/* segmented outer frame */
+.card::before {
   content: "";
   position: absolute;
-
-  top: 9px;
-  left: 11px;
-  right: 10px;
-  bottom: 10px;
-
-  border: 1.5px solid rgba(25,26,26,0.7);
-
-  /* slight imperfection */
-  transform: rotate(0.08deg);
+  inset: -12px;
 
   pointer-events: none;
+
+  background:
+    linear-gradient(#191a1a,#191a1a) left top / 38% 2px no-repeat,
+    linear-gradient(#191a1a,#191a1a) right top / 38% 2px no-repeat,
+    linear-gradient(#191a1a,#191a1a) left bottom / 38% 2px no-repeat,
+    linear-gradient(#191a1a,#191a1a) right bottom / 38% 2px no-repeat,
+    linear-gradient(#191a1a,#191a1a) left center / 2px 100% no-repeat,
+    linear-gradient(#191a1a,#191a1a) right center / 2px 100% no-repeat;
+
+  opacity: 0.85;
 }
 
-/* Top section */
-.card-top {
-  padding: 1.6rem 1.4rem;
+/* inner content box */
+.inner {
+  border: 1px solid #191a1a;
 
-  display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
+  padding: 1.4rem 1.2rem;
 
-  align-items: flex-start;
+  margin-bottom: 14px; /* gap before buttons */
 }
 
-/* Typography */
+/* typography */
 h1 {
   font-size: 1.5rem;
   font-weight: 500;
-  color: #191A1A;
+  color: #191a1a;
+  margin-bottom: 0.5rem;
 }
 
 .subtitle {
   font-size: 0.85rem;
-  color: #191A1A;
   opacity: 0.6;
+  margin-bottom: 0.8rem;
 }
 
 .bio {
   font-size: 0.9rem;
   line-height: 1.45;
-  color: #191A1A;
-
-  text-align: left;
   max-width: 30ch;
 }
 
 .bio a {
-  color: #191A1A;
+  color: #191a1a;
   text-decoration: underline;
 }
 
-/* Bottom section */
-.card-bottom {
+/* button row */
+.buttons {
   display: flex;
-  height: 85px;
-
-  border-top: 2px solid rgba(25,26,26,0.6);
+  gap: 8px;
 }
 
-/* Blocks */
-.block {
+/* buttons */
+.btn {
   flex: 1;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
+  height: 60px;
+
+  border: 1px solid #191a1a;
   text-decoration: none;
-  color: #191A1A;
+  color: #191a1a;
   font-size: 0.85rem;
 
   transition: background 0.2s ease;
 }
 
-/* Divider */
-.block + .block {
-  border-left: 2px solid rgba(25,26,26,0.6);
-}
-
-/* Slight softness on dividers */
-.card-bottom,
-.block + .block {
-  filter: blur(0.1px);
-}
-
-/* Colors */
+/* colors */
 .work {
   background: #A4AF69;
 }
@@ -162,7 +151,7 @@ h1 {
   background: #E3BACF;
 }
 
-/* Hover */
-.block:hover {
+/* hover */
+.btn:hover {
   background: #FECF43;
 }
