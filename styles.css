@@ -12,12 +12,11 @@ body {
 
 :root {
   --bg: #4f86f7;
-  --ink: #262522;
-  --paper: #ece7dd;
-  --inner-stroke: rgba(38, 37, 34, 0.55);
+  --ink: #222220;
+  --paper: #ece9de;
+  --inner-ink: rgba(34, 34, 32, 0.78);
   --olive: #a8b56b;
-  --pink: #d7b4c8;
-  --shadow: rgba(0, 0, 0, 0.12);
+  --pink: #d8b6c9;
 }
 
 body {
@@ -34,7 +33,7 @@ body {
   background: var(--bg);
 }
 
-/* subtle grain overlay */
+/* grain overlay - a bit stronger now */
 body::before {
   content: "";
   position: fixed;
@@ -43,12 +42,13 @@ body::before {
 
   background-image: url("grain.png");
   background-repeat: repeat;
-  background-size: 180px 180px;
+  background-size: 165px 165px;
 
-  opacity: 0.04;
+  opacity: 0.06;
   mix-blend-mode: multiply;
 }
 
+/* page wrapper */
 .container {
   width: 100%;
   display: flex;
@@ -59,41 +59,60 @@ body::before {
 .card {
   width: min(560px, 100%);
   background: var(--paper);
-  border: 2px solid var(--ink);
-  padding: 26px;
+  border: 2px solid rgba(34, 34, 32, 0.9);
+  padding: 20px;
   position: relative;
-  box-shadow: 0 8px 20px var(--shadow);
+
+  /* slightly fuzzy / soft shadowed edges */
+  box-shadow:
+    0 0 0 0.4px rgba(34, 34, 32, 0.6),
+    0 3px 0 rgba(34, 34, 32, 0.22),
+    5px 7px 0 rgba(34, 34, 32, 0.18),
+    7px 10px 14px rgba(34, 34, 32, 0.14);
 }
 
-/* outer offset frame - verticals */
+/* inner frame lines live INSIDE the card */
 .card::before {
   content: "";
   position: absolute;
-  inset: -14px;
-  border-left: 2px solid var(--ink);
-  border-right: 2px solid var(--ink);
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  bottom: 108px; /* leaves space before buttons */
+  border-left: 2px solid var(--inner-ink);
+  border-right: 2px solid var(--inner-ink);
   pointer-events: none;
+
+  filter: blur(0.15px);
+  opacity: 0.96;
 }
 
-/* outer offset frame - broken top/bottom lines */
+/* top and bottom split lines inside the card */
 .card::after {
   content: "";
   position: absolute;
-  inset: -14px;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  bottom: 108px;
   pointer-events: none;
+
   background:
-    linear-gradient(var(--ink), var(--ink)) top left / calc(50% - 70px) 2px no-repeat,
-    linear-gradient(var(--ink), var(--ink)) top right / calc(50% - 70px) 2px no-repeat,
-    linear-gradient(var(--ink), var(--ink)) bottom left / calc(50% - 70px) 2px no-repeat,
-    linear-gradient(var(--ink), var(--ink)) bottom right / calc(50% - 70px) 2px no-repeat;
+    linear-gradient(var(--inner-ink), var(--inner-ink)) top left / calc(50% - 68px) 2px no-repeat,
+    linear-gradient(var(--inner-ink), var(--inner-ink)) top right / calc(50% - 68px) 2px no-repeat,
+    linear-gradient(var(--inner-ink), var(--inner-ink)) bottom left / calc(50% - 86px) 2px no-repeat,
+    linear-gradient(var(--inner-ink), var(--inner-ink)) bottom right / calc(50% - 86px) 2px no-repeat;
+
+  filter: blur(0.15px);
+  opacity: 0.96;
 }
 
-/* inner text panel */
+/* content block */
 .inner {
-  border: 2px solid var(--inner-stroke);
-  padding: 30px 28px 34px;
+  position: relative;
+  z-index: 1;
+  padding: 34px 34px 30px;
   margin-bottom: 16px;
-  background: rgba(255, 255, 255, 0.04);
 }
 
 h1 {
@@ -107,7 +126,7 @@ h1 {
 .subtitle {
   margin: 0 0 18px;
   font-size: 1rem;
-  color: rgba(38, 37, 34, 0.62);
+  color: rgba(34, 34, 32, 0.62);
 }
 
 .bio {
@@ -123,23 +142,35 @@ h1 {
   text-underline-offset: 0.08em;
 }
 
-/* small cards / buttons */
+/* button row */
 .buttons {
+  position: relative;
+  z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
 }
 
+/* little buttons/cards */
 .btn {
   min-height: 86px;
   display: grid;
   place-items: center;
-  border: 2px solid rgba(38, 37, 34, 0.72);
   text-decoration: none;
   color: var(--ink);
   font-size: 1rem;
-  background: #ddd;
-  transition: transform 140ms ease, filter 140ms ease;
+  border: 2px solid rgba(34, 34, 32, 0.72);
+
+  box-shadow:
+    0 0 0 0.4px rgba(34, 34, 32, 0.35),
+    0 2px 0 rgba(34, 34, 32, 0.12);
+
+  transform: scale(1);
+  transition:
+    background-color 180ms ease,
+    transform 180ms cubic-bezier(0.2, 0.9, 0.2, 1.15),
+    box-shadow 180ms ease,
+    filter 180ms ease;
 }
 
 .work {
@@ -151,39 +182,48 @@ h1 {
 }
 
 .btn:hover {
-  transform: translateY(-1px);
-  filter: brightness(1.01);
+  background: #fecf43;
+  transform: translateY(-1px) scale(1.015, 0.985);
+  box-shadow:
+    0 0 0 0.4px rgba(34, 34, 32, 0.35),
+    0 3px 0 rgba(34, 34, 32, 0.16);
+  filter: saturate(1.02);
 }
 
 .btn:active {
-  transform: translateY(0);
+  transform: translateY(1px) scale(0.985, 0.96);
+  box-shadow:
+    0 0 0 0.4px rgba(34, 34, 32, 0.28),
+    0 1px 0 rgba(34, 34, 32, 0.1);
 }
 
-/* mobile */
 @media (max-width: 640px) {
   body {
     padding: 20px;
   }
 
   .card {
-    padding: 18px;
+    padding: 16px;
   }
 
   .card::before,
   .card::after {
-    inset: -10px;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 92px;
   }
 
   .card::after {
     background:
-      linear-gradient(var(--ink), var(--ink)) top left / calc(50% - 54px) 2px no-repeat,
-      linear-gradient(var(--ink), var(--ink)) top right / calc(50% - 54px) 2px no-repeat,
-      linear-gradient(var(--ink), var(--ink)) bottom left / calc(50% - 54px) 2px no-repeat,
-      linear-gradient(var(--ink), var(--ink)) bottom right / calc(50% - 54px) 2px no-repeat;
+      linear-gradient(var(--inner-ink), var(--inner-ink)) top left / calc(50% - 52px) 2px no-repeat,
+      linear-gradient(var(--inner-ink), var(--inner-ink)) top right / calc(50% - 52px) 2px no-repeat,
+      linear-gradient(var(--inner-ink), var(--inner-ink)) bottom left / calc(50% - 68px) 2px no-repeat,
+      linear-gradient(var(--inner-ink), var(--inner-ink)) bottom right / calc(50% - 68px) 2px no-repeat;
   }
 
   .inner {
-    padding: 22px 20px 24px;
+    padding: 26px 22px 22px;
     margin-bottom: 12px;
   }
 
