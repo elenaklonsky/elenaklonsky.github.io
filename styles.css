@@ -1,0 +1,131 @@
+/* Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: serif;
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  /* Blue atmospheric background */
+  background: linear-gradient(
+    to bottom,
+    #6A92E8,
+    #508BFC,
+    #4A78D6
+  );
+
+  position: relative;
+}
+
+/* Subtle grain */
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+  opacity: 0.07;
+  pointer-events: none;
+}
+
+/* Center container */
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Main card (intentionally small) */
+.card {
+  width: 90%;
+  max-width: 360px;
+
+  background: #F9F9F0;
+  border: 1px solid rgba(25, 26, 26, 0.25);
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Top section */
+.card-top {
+  padding: 1.8rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+
+  align-items: flex-start; /* force left alignment */
+}
+
+/* Typography */
+h1 {
+  font-size: 1.6rem;
+  font-weight: normal;
+  color: #191A1A;
+}
+
+.subtitle {
+  font-size: 0.9rem;
+  color: #191A1A;
+  opacity: 0.7;
+}
+
+.bio {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #191A1A;
+
+  text-align: left;
+  max-width: 32ch;
+}
+
+.bio a {
+  color: #191A1A;
+  text-decoration: underline;
+}
+
+/* Bottom section */
+.card-bottom {
+  display: flex;
+  height: 90px;
+  border-top: 1px solid rgba(25, 26, 26, 0.25);
+}
+
+/* Split blocks */
+.block {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-decoration: none;
+  color: #191A1A;
+  font-size: 0.9rem;
+
+  transition: background 0.2s ease;
+}
+
+/* Divider */
+.block + .block {
+  border-left: 1px solid rgba(25, 26, 26, 0.25);
+}
+
+/* Default colors */
+.work {
+  background: #A4AF69;
+}
+
+.fun {
+  background: #E3BACF;
+}
+
+/* Hover (yellow only here) */
+.block:hover {
+  background: #FECF43;
+}
