@@ -19,7 +19,7 @@ body {
 }
 
 :root {
-  --bg-blue: #508bfc;
+  --bg-blue: #6a97ff;
   --paper: #f4eedf;
   --ink: #0a0a0a;
   --carbon: #29241e;
@@ -48,40 +48,40 @@ body::before {
   inset: 0;
   pointer-events: none;
   background: url("./images/grain.png") center / 170px 170px repeat;
-  opacity: 0.07;
+  opacity: 0.045;
   mix-blend-mode: multiply;
 }
 
-/* broader blue grain, larger scale */
+/* bigger blue grain */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: url("./images/grain2.png") center / 620px 620px repeat;
-  opacity: 0.34;
+  background: url("./images/grain2.png") center / 680px 680px repeat;
+  opacity: 0.24;
   mix-blend-mode: soft-light;
 }
 
-/* extra neutral surface texture, but keep blue color */
+/* soft-light neutral texture */
 .bg-texture {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 0;
   background: url("./images/texture.jpg") center / 260px 260px repeat;
-  opacity: 0.18;
+  opacity: 0.1;
   mix-blend-mode: soft-light;
 }
 
-/* full site frame */
+/* site frame */
 .site-border {
   position: fixed;
   inset: 6px;
   pointer-events: none;
   z-index: 20;
-  border: 1px solid rgba(41, 36, 30, 0.82);
-  box-shadow: inset 0 0 0 1px rgba(41, 36, 30, 0.38);
+  border: 1px solid rgba(41, 36, 30, 0.78);
+  box-shadow: inset 0 0 0 1px rgba(41, 36, 30, 0.34);
 }
 
 /* top and bottom repeated motif */
@@ -105,7 +105,7 @@ body::after {
   bottom: 2px;
 }
 
-/* left and right repeated motif using rotated strip */
+/* left and right repeated motif */
 .site-border__side {
   position: absolute;
   top: 22px;
@@ -144,7 +144,7 @@ body::after {
   z-index: 1;
 }
 
-/* portrait card */
+/* outer card */
 .card {
   width: min(405px, 100%);
   background: var(--paper);
@@ -153,67 +153,68 @@ body::after {
   position: relative;
   box-shadow:
     0 0 0 0.35px rgba(41, 36, 30, 0.72),
-    3px 3px 0 rgba(41, 36, 30, 0.24),
-    6px 8px 16px rgba(41, 36, 30, 0.16);
+    3px 3px 0 rgba(41, 36, 30, 0.22),
+    6px 8px 16px rgba(41, 36, 30, 0.12);
 }
 
-/* vertical frame lines */
-.card::before {
-  content: "";
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  top: 14px;
-  bottom: 58px;
-  border-left: 1px solid rgba(10, 10, 10, 0.62);
-  border-right: 1px solid rgba(10, 10, 10, 0.62);
-  pointer-events: none;
-  filter: blur(0.18px);
-}
-
-/* top split line + broken bottom line */
-.card::after {
-  content: "";
-  position: absolute;
-  left: 14px;
-  right: 14px;
-  top: 14px;
-  bottom: 58px;
-  pointer-events: none;
-  filter: blur(0.18px);
-  background:
-    linear-gradient(rgba(10,10,10,0.62), rgba(10,10,10,0.62))
-      top left / calc(50% - 72px) 1px no-repeat,
-    linear-gradient(rgba(10,10,10,0.62), rgba(10,10,10,0.62))
-      top right / calc(50% - 72px) 1px no-repeat,
-    linear-gradient(rgba(10,10,10,0.62), rgba(10,10,10,0.62))
-      bottom left / 34px 1px no-repeat,
-    linear-gradient(rgba(10,10,10,0.62), rgba(10,10,10,0.62))
-      bottom center / 22px 1px no-repeat,
-    linear-gradient(rgba(10,10,10,0.62), rgba(10,10,10,0.62))
-      bottom right / 34px 1px no-repeat;
-}
-
-/* content area */
+/* inner framed area */
 .inner {
   position: relative;
   z-index: 1;
-  padding: 52px 18px 16px;
+  padding: 46px 18px 16px;
   margin-bottom: 12px;
+  min-height: 360px;
+  border-left: 1px solid rgba(10, 10, 10, 0.62);
+  border-right: 1px solid rgba(10, 10, 10, 0.62);
+  border-bottom: 1px solid rgba(10, 10, 10, 0.62);
   background:
-    linear-gradient(rgba(255,255,255,0.06), rgba(255,255,255,0.015)),
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05) 0, transparent 55%);
+    linear-gradient(rgba(255,255,255,0.04), rgba(255,255,255,0.01)),
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.035) 0, transparent 55%);
 }
 
-/* title crossing the top border */
+/* split top line of inner frame */
+.inner::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background:
+    linear-gradient(rgba(10,10,10,0.62), rgba(10,10,10,0.62))
+      left center / calc(50% - 74px) 1px no-repeat,
+    linear-gradient(rgba(10,10,10,0.62), rgba(10,10,10,0.62))
+      right center / calc(50% - 74px) 1px no-repeat;
+  pointer-events: none;
+}
+
+/* broken lower line behind buttons */
+.card::after {
+  content: "";
+  position: absolute;
+  left: 32px;
+  right: 32px;
+  bottom: 104px;
+  height: 1px;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(10,10,10,0.62), rgba(10,10,10,0.62))
+      left center / 44px 1px no-repeat,
+    linear-gradient(rgba(10,10,10,0.62), rgba(10,10,10,0.62))
+      center center / 24px 1px no-repeat,
+    linear-gradient(rgba(10,10,10,0.62), rgba(10,10,10,0.62))
+      right center / 44px 1px no-repeat;
+}
+
+/* title attached to inner frame */
 h1 {
   position: absolute;
   top: -18px;
   left: 50%;
   transform: translateX(-50%);
   margin: 0;
-  padding: 0 14px;
-  font-size: 1.2rem;
+  padding: 0 12px;
+  font-size: 1.15rem;
   line-height: 1;
   font-weight: 400;
   font-style: italic;
@@ -224,15 +225,9 @@ h1 {
   z-index: 3;
 }
 
-.subtitle {
-  margin: 0 0 18px;
-  font-size: 0.8rem;
-  color: rgba(10, 10, 10, 0.55);
-  text-align: left;
-}
-
+/* copy starts fairly near title */
 .bio {
-  margin: 0;
+  margin: 14px 0 0;
   font-size: 0.78rem;
   line-height: 1.42;
   text-align: left;
@@ -245,18 +240,18 @@ h1 {
   text-underline-offset: 0.08em;
 }
 
-/* bottom buttons */
+/* buttons: horizontal, lower in card */
 .buttons {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  padding-inline: 22px;
+  padding-inline: 44px;
 }
 
 .btn {
-  min-height: 36px;
+  min-height: 84px;
   padding: 0 14px;
   display: grid;
   place-items: center;
@@ -286,14 +281,14 @@ h1 {
 
 .btn:hover {
   background: var(--hover-yellow);
-  transform: translateY(0) scaleX(1.01) scaleY(0.965);
+  transform: translateY(0) scaleX(1.01) scaleY(0.975);
   box-shadow:
     0 0 0 0.35px rgba(10, 10, 10, 0.34),
     0 1px 0 rgba(10, 10, 10, 0.14);
 }
 
 .btn:active {
-  transform: translateY(1px) scaleX(1.015) scaleY(0.92);
+  transform: translateY(1px) scaleX(1.015) scaleY(0.94);
   box-shadow:
     0 0 0 0.35px rgba(10, 10, 10, 0.26),
     0 0.5px 0 rgba(10, 10, 10, 0.08);
@@ -313,16 +308,17 @@ h1 {
     padding: 15px 15px 18px;
   }
 
-  .card::before,
-  .card::after {
-    left: 11px;
-    right: 11px;
-    top: 11px;
-    bottom: 54px;
+  .inner {
+    min-height: 320px;
+    padding: 42px 16px 14px;
   }
 
-  .inner {
-    padding: 46px 16px 14px;
+  .inner::before {
+    background:
+      linear-gradient(rgba(10,10,10,0.62), rgba(10,10,10,0.62))
+        left center / calc(50% - 62px) 1px no-repeat,
+      linear-gradient(rgba(10,10,10,0.62), rgba(10,10,10,0.62))
+        right center / calc(50% - 62px) 1px no-repeat;
   }
 
   h1 {
@@ -331,23 +327,25 @@ h1 {
     padding: 0 10px;
   }
 
-  .subtitle {
-    margin-bottom: 16px;
-    font-size: 0.76rem;
-  }
-
   .bio {
+    margin-top: 12px;
     font-size: 0.75rem;
     line-height: 1.4;
   }
 
+  .card::after {
+    left: 26px;
+    right: 26px;
+    bottom: 96px;
+  }
+
   .buttons {
     gap: 10px;
-    padding-inline: 18px;
+    padding-inline: 34px;
   }
 
   .btn {
-    min-height: 34px;
+    min-height: 74px;
     font-size: 0.74rem;
   }
 }
