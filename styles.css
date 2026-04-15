@@ -39,10 +39,14 @@ body::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: url("grain.png") center / 320px repeat;
-  opacity: 0.06;
-  mix-blend-mode: multiply;
   pointer-events: none;
+
+  background-image: url("grain.png");
+  background-repeat: repeat;
+  background-size: 180px 180px;
+
+  opacity: 0.04;
+  mix-blend-mode: multiply;
 }
 
 .container {
