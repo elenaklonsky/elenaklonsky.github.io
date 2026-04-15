@@ -202,6 +202,7 @@ h1 {
 }
 
 /* buttons overlap the one inner box */
+
 .buttons {
   position: relative;
   z-index: 2;
@@ -210,13 +211,15 @@ h1 {
   gap: 12px;
   padding-inline: 44px;
   margin-top: -48px;
+  align-items: end;
 }
 
-
 .btn {
-  padding: 16px 14px;
+  height: 72px;
+  padding: 0 14px;
   display: grid;
   place-items: center;
+  align-self: end;
   text-decoration: none;
   color: var(--ink);
   font-size: 0.78rem;
@@ -257,18 +260,43 @@ h1 {
 }
 
 @media (max-width: 560px) {
+  body {
+    padding: 18px;
+  }
+
+  .site-border {
+    inset: 4px;
+  }
+
+  .card {
+    width: min(380px, 100%);
+    padding: 24px 15px 18px;
+  }
+
   .inner {
-    padding: 30px 16px 70px;
+    padding: 24px 14px 56px;
+  }
+
+  h1 {
+    top: -9px;
+    font-size: 1rem;
+    padding: 0 10px;
+  }
+
+  .bio {
+    margin-top: 8px;
+    font-size: 0.75rem;
+    line-height: 1.4;
   }
 
   .buttons {
-    padding-inline: 28px;
-    margin-top: -48px;
     gap: 10px;
+    padding-inline: 28px;
+    margin-top: -40px;
   }
 
   .btn {
-    padding: 16px 12px;
+    padding: 14px 12px;
     font-size: 0.74rem;
   }
 }
