@@ -4,20 +4,25 @@
   box-sizing: border-box;
 }
 
+/* ----- COLORS ----- */
+
+:root {
+  --bg-blue: #508bfc;
+  --paper: #f4eedf;     /* warm cream card */
+  --ink: #0a0a0a;
+  --carbon: #29241e;
+
+  --olive: #758153;
+  --lavender: #d6bfd7;
+  --hover-yellow: #fecf43;
+}
+
+/* ----- PAGE + GRAIN BACKGROUND ----- */
+
 html,
 body {
   margin: 0;
   min-height: 100%;
-}
-
-:root {
-  --bg: #59afe3;
-  --ink: rgba(28, 28, 26, 0.92);
-  --ink-soft: rgba(28, 28, 26, 0.72);
-  --paper: #ece9df;
-  --olive: #69bf63;
-  --pink: #df4f9d;
-  --hover-yellow: #fecf43;
 }
 
 body {
@@ -31,46 +36,28 @@ body {
   font-family: "Avenir", "Helvetica Neue", Arial, sans-serif;
   text-transform: lowercase;
   color: var(--ink);
-  background: var(--bg);
+  background: var(--bg-blue);
 }
 
-/* base grain from grain.png – slightly stronger */
+/* irregular grain from your new image */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-
-  background: url("grain.png") center / 220px 220px repeat;
-
-  opacity: 0.09;
+  background: url("1grain.jpg") center / 480px 480px repeat;
+  opacity: 0.22;              /* dial this up/down to taste */
   mix-blend-mode: soft-light;
 }
 
-/* coloured noise layer to break the regular pattern */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  mix-blend-mode: soft-light;
-  opacity: 0.18;
-
-  background-image:
-    radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.17) 0, transparent 52%),
-    radial-gradient(circle at 80% 0%, rgba(0, 80, 255, 0.18) 0, transparent 55%),
-    radial-gradient(circle at 0% 100%, rgba(255, 255, 255, 0.12) 0, transparent 50%),
-    radial-gradient(circle at 100% 100%, rgba(0, 40, 140, 0.2) 0, transparent 50%);
-}
-
-/* layout */
 .container {
   width: 100%;
   display: flex;
   justify-content: center;
 }
 
-/* smaller card */
+/* ----- CARD ----- */
+
 .card {
   width: min(430px, 100%);
   background: var(--paper);
@@ -79,26 +66,25 @@ body::after {
   position: relative;
 
   box-shadow:
-    0 0 0 0.35px rgba(28, 28, 26, 0.45),
-    3px 3px 0 rgba(28, 28, 26, 0.14),
-    5px 6px 10px rgba(28, 28, 26, 0.1);
+    0 0 0 0.35px rgba(41, 36, 30, 0.7),
+    3px 3px 0 rgba(41, 36, 30, 0.32),
+    6px 7px 14px rgba(41, 36, 30, 0.2);
 }
 
-/* vertical inner lines */
+/* inner hairline frame */
 .card::before {
   content: "";
   position: absolute;
   left: 14px;
   right: 14px;
   top: 14px;
-  bottom: 58px; /* stop above button row */
-  border-left: 1px solid var(--ink-soft);
-  border-right: 1px solid var(--ink-soft);
+  bottom: 58px;   /* stops above button row */
+  border-left: 1px solid rgba(10, 10, 10, 0.65);
+  border-right: 1px solid rgba(10, 10, 10, 0.65);
   pointer-events: none;
   filter: blur(0.2px);
 }
 
-/* top line + 3-part bottom line */
 .card::after {
   content: "";
   position: absolute;
@@ -109,18 +95,24 @@ body::after {
   pointer-events: none;
   filter: blur(0.2px);
   background:
-    /* top full-ish line */
-    linear-gradient(var(--ink-soft), var(--ink-soft)) top center / 100% 1px no-repeat,
+    /* top full line */
+    linear-gradient(rgba(10, 10, 10, 0.65), rgba(10, 10, 10, 0.65))
+      top center / 100% 1px no-repeat,
 
     /* bottom left segment */
-    linear-gradient(var(--ink-soft), var(--ink-soft)) bottom left / 40px 1px no-repeat,
+    linear-gradient(rgba(10, 10, 10, 0.65), rgba(10, 10, 10, 0.65))
+      bottom left / 40px 1px no-repeat,
 
-    /* bottom middle tiny segment */
-    linear-gradient(var(--ink-soft), var(--ink-soft)) bottom center / 24px 1px no-repeat,
+    /* tiny middle segment */
+    linear-gradient(rgba(10, 10, 10, 0.65), rgba(10, 10, 10, 0.65))
+      bottom center / 24px 1px no-repeat,
 
     /* bottom right segment */
-    linear-gradient(var(--ink-soft), var(--ink-soft)) bottom right / 40px 1px no-repeat;
+    linear-gradient(rgba(10, 10, 10, 0.65), rgba(10, 10, 10, 0.65))
+      bottom right / 40px 1px no-repeat;
 }
+
+/* ----- INNER CONTENT ----- */
 
 .inner {
   position: relative;
@@ -130,24 +122,26 @@ body::after {
 }
 
 h1 {
-  margin: 0 0 8px;
-  font-size: 1.05rem;
+  margin: 0 0 10px;
+  font-size: 1.3rem;
   line-height: 1.1;
   font-weight: 500;
   letter-spacing: -0.01em;
+  text-align: left;
 }
 
 .subtitle {
-  margin: 0 0 12px;
-  font-size: 0.78rem;
-  color: rgba(28, 28, 26, 0.58);
+  margin: 0 0 14px;
+  font-size: 0.86rem;
+  color: rgba(10, 10, 10, 0.6);
+  text-align: left;
 }
 
 .bio {
   margin: 0;
-  max-width: 26ch;
-  font-size: 0.82rem;
-  line-height: 1.42;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  text-align: left;
 }
 
 .bio a {
@@ -156,27 +150,29 @@ h1 {
   text-underline-offset: 0.08em;
 }
 
+/* ----- BUTTON ROW ----- */
+
 .buttons {
   position: relative;
   z-index: 1;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
-  padding-inline: 38px; /* pulls buttons inward so border segments show */
+  padding-inline: 38px; /* leaves bottom-line segments visible */
 }
 
 .btn {
-  min-height: 54px;
+  min-height: 56px;
   display: grid;
   place-items: center;
   text-decoration: none;
   color: var(--ink);
-  font-size: 0.78rem;
-  border: 1px solid rgba(28, 28, 26, 0.55);
+  font-size: 0.88rem;
+  border: 1px solid rgba(10, 10, 10, 0.55);
 
   box-shadow:
-    0 0 0 0.35px rgba(28, 28, 26, 0.28),
-    0 1px 0 rgba(28, 28, 26, 0.1);
+    0 0 0 0.35px rgba(10, 10, 10, 0.38),
+    0 1px 0 rgba(10, 10, 10, 0.14);
 
   transform: scale(1);
   transition:
@@ -191,23 +187,25 @@ h1 {
 }
 
 .fun {
-  background: var(--pink);
+  background: var(--lavender);
 }
 
 .btn:hover {
   background: var(--hover-yellow);
   transform: translateY(-1px) scale(1.015, 0.985);
   box-shadow:
-    0 0 0 0.35px rgba(28, 28, 26, 0.28),
-    0 2px 0 rgba(28, 28, 26, 0.14);
+    0 0 0 0.35px rgba(10, 10, 10, 0.38),
+    0 2px 0 rgba(10, 10, 10, 0.18);
 }
 
 .btn:active {
   transform: translateY(1px) scale(0.985, 0.96);
   box-shadow:
-    0 0 0 0.35px rgba(28, 28, 26, 0.22),
-    0 1px 0 rgba(28, 28, 26, 0.08);
+    0 0 0 0.35px rgba(10, 10, 10, 0.3),
+    0 1px 0 rgba(10, 10, 10, 0.12);
 }
+
+/* ----- MOBILE ----- */
 
 @media (max-width: 520px) {
   body {
@@ -237,11 +235,7 @@ h1 {
   }
 
   .btn {
-    min-height: 48px;
-    font-size: 0.74rem;
-  }
-
-  .bio {
-    max-width: 100%;
+    min-height: 50px;
+    font-size: 0.84rem;
   }
 }
