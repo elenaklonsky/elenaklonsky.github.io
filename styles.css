@@ -43,14 +43,223 @@ body {
   background: var(--bg-blue);
 }
 
-/* tiled base grain from your new image */
+/* background grain / blue atmosphere */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-
   background: url("./images/grain2.png") center / 260px 260px repeat;
-  opacity: 0.12;
+  opacity: 0.14;
   mix-blend-mode: soft-light;
+}
+
+/* subtle tonal breakup so bg feels less flat */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.14;
+  mix-blend-mode: soft-light;
+  background-image:
+    radial-gradient(circle at 15% 20%, rgba(255,255,255,0.16) 0, transparent 48%),
+    radial-gradient(circle at 85% 15%, rgba(110,150,255,0.16) 0, transparent 52%),
+    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.1) 0, transparent 45%),
+    radial-gradient(circle at 80% 85%, rgba(60,90,200,0.16) 0, transparent 48%);
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* portrait card */
+.card {
+  width: min(420px, 100%);
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 18px 18px 20px;
+  position: relative;
+
+  box-shadow:
+    0 0 0 0.35px rgba(41, 36, 30, 0.72),
+    3px 3px 0 rgba(41, 36, 30, 0.24),
+    6px 8px 16px rgba(41, 36, 30, 0.16);
+}
+
+/* inner vertical frame */
+.card::before {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 14px;
+  bottom: 66px;
+  border-left: 1px solid rgba(10, 10, 10, 0.62);
+  border-right: 1px solid rgba(10, 10, 10, 0.62);
+  pointer-events: none;
+  filter: blur(0.18px);
+}
+
+/* top line + broken bottom line */
+.card::after {
+  content: "";
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  top: 14px;
+  bottom: 66px;
+  pointer-events: none;
+  filter: blur(0.18px);
+  background:
+    linear-gradient(rgba(10,10,10,0.62), rgba(10,10,10,0.62))
+      top center / 100% 1px no-repeat,
+    linear-gradient(rgba(10,10,10,0.62), rgba(10,10,10,0.62))
+      bottom left / 44px 1px no-repeat,
+    linear-gradient(rgba(10,10,10,0.62), rgba(10,10,10,0.62))
+      bottom center / 26px 1px no-repeat,
+    linear-gradient(rgba(10,10,10,0.62), rgba(10,10,10,0.62))
+      bottom right / 44px 1px no-repeat;
+}
+
+/* text area with subtle paper differentiation */
+.inner {
+  position: relative;
+  z-index: 1;
+  padding: 24px 22px 20px;
+  margin-bottom: 14px;
+  background:
+    linear-gradient(rgba(255,255,255,0.08), rgba(255,255,255,0.02)),
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08) 0, transparent 55%);
+}
+
+h1 {
+  margin: 0 0 10px;
+  font-size: 1.35rem;
+  line-height: 1.05;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+.subtitle {
+  margin: 0 0 14px;
+  font-size: 0.88rem;
+  color: rgba(10, 10, 10, 0.58);
+  text-align: left;
+}
+
+.bio {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.58;
+  text-align: left;
+  max-width: none;
+}
+
+.bio a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.08em;
+}
+
+.buttons {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding-inline: 34px;
+}
+
+.btn {
+  min-height: 56px;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  color: var(--ink);
+  font-size: 0.88rem;
+  border: 1px solid rgba(10, 10, 10, 0.55);
+
+  box-shadow:
+    0 0 0 0.35px rgba(10, 10, 10, 0.34),
+    0 1px 0 rgba(10, 10, 10, 0.12);
+
+  transform: translateY(0) scaleX(1) scaleY(1);
+  transform-origin: center center;
+  transition:
+    background-color 180ms ease,
+    transform 190ms cubic-bezier(0.2, 0.9, 0.25, 1.05),
+    box-shadow 180ms ease,
+    filter 180ms ease;
+}
+
+.work {
+  background: var(--olive);
+}
+
+.fun {
+  background: var(--lavender);
+}
+
+.btn:hover {
+  background: var(--hover-yellow);
+  transform: translateY(0) scaleX(1.01) scaleY(0.965);
+  box-shadow:
+    0 0 0 0.35px rgba(10, 10, 10, 0.34),
+    0 1px 0 rgba(10, 10, 10, 0.14);
+}
+
+.btn:active {
+  transform: translateY(1px) scaleX(1.015) scaleY(0.92);
+  box-shadow:
+    0 0 0 0.35px rgba(10, 10, 10, 0.26),
+    0 0.5px 0 rgba(10, 10, 10, 0.08);
+}
+
+@media (max-width: 560px) {
+  body {
+    padding: 18px;
+  }
+
+  .card {
+    width: min(390px, 100%);
+    padding: 15px 15px 18px;
+  }
+
+  .card::before,
+  .card::after {
+    left: 11px;
+    right: 11px;
+    top: 11px;
+    bottom: 58px;
+  }
+
+  .inner {
+    padding: 18px 16px 14px;
+  }
+
+  h1 {
+    font-size: 1.18rem;
+  }
+
+  .subtitle {
+    font-size: 0.82rem;
+  }
+
+  .bio {
+    font-size: 0.88rem;
+  }
+
+  .buttons {
+    gap: 10px;
+    padding-inline: 26px;
+  }
+
+  .btn {
+    min-height: 50px;
+    font-size: 0.82rem;
+  }
 }
