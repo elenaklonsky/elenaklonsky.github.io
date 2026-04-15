@@ -134,6 +134,16 @@ body::after {
   right: 2px;
 }
 
+/* toggle ornaments off */
+.site-border.is-plain::before,
+.site-border.is-plain::after {
+  content: none;
+}
+
+.site-border.is-plain .site-border__side {
+  display: none;
+}
+
 .container {
   width: 100%;
   display: flex;
@@ -215,14 +225,16 @@ h1 {
 }
 
 .btn {
-  height: 72px;
+  height: 68px;
   padding: 0 14px;
   display: grid;
   place-items: center;
+  text-align: center;
   align-self: end;
   text-decoration: none;
   color: var(--ink);
   font-size: 0.78rem;
+  line-height: 1;
   border: 1px solid rgba(10, 10, 10, 0.55);
   box-shadow:
     0 0 0 0.35px rgba(10, 10, 10, 0.34),
