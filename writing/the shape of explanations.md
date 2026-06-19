@@ -4,7 +4,7 @@ date: 2026-06-19
 ---
 ## The Shape of Explanations
 
-*Anthrogen releases Odyssey1, Fei-Fei Li evangelises Spatial Intelligence and the universe breaks our brain.*
+*Anthrogen releases Odyssey1, Fei-Fei Li evangelises Spatial Intelligence and the universe breaks me brain.*
 
 Artificial intelligence sits on a central branch of the tech tree that leads towards planetary abundance. That branch and its offshoots sprawl across materials, biology, robotics, and earth systems, but the systems we think will matter share one trait - an ability to decode the secrets of the universe via explanations, rather than predictions.
 
