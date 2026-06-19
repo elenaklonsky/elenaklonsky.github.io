@@ -64,7 +64,14 @@ body:has(.card--writing) .container {
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  padding: 32px 28px 30px;
+  padding: 58px 28px 30px;
+}
+.card--writing h1 {
+  position: relative;
+  z-index: 4;
+  margin-top: -38px;
+  background: var(--paper);
+  padding: 0 18px;
 }
 
 .buttons--single {
@@ -81,7 +88,7 @@ body:has(.card--writing) .container {
 
 .writing-back {
   position: absolute;
-  top: 16px;
+  top: 22px;
   left: 28px;
   z-index: 40;
   color: inherit;
