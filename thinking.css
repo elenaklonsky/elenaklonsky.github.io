@@ -310,3 +310,10 @@ body:has(.card--writing) .container {
     display: block;
   }
 }
+/* font override for article body text only */
+.card--writing .writing-body,
+.card--writing .writing-body p,
+.card--writing .writing-body li,
+.card--writing .writing-body blockquote {
+  font-family: Futura, "Futura PT", "Trebuchet MS", Arial, sans-serif !important;
+}
