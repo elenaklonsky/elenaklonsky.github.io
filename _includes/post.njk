@@ -27,15 +27,38 @@ layout: base.njk
 
     const startOffset = 88;
     const minOffset = 0;
+
+    const bottomOverhang = 28;
+    const finalBlueGap = 16;
+    const maxBottomReveal = bottomOverhang + finalBlueGap;
+
     const cardSpeed = 0.45;
     const textSpeed = 0.30;
+    const revealSpeed = 0.35;
 
     let cardOffset = startOffset;
+    let bottomReveal = 0;
+
     root.style.setProperty("--writing-card-offset", `${cardOffset}px`);
+    root.style.setProperty("--writing-bottom-overhang", `${bottomOverhang}px`);
+    root.style.setProperty("--writing-bottom-reveal", `${bottomReveal}px`);
 
     function setCardOffset(value) {
       cardOffset = Math.max(minOffset, Math.min(startOffset, value));
       root.style.setProperty("--writing-card-offset", `${cardOffset}px`);
+    }
+
+    function setBottomReveal(value) {
+      bottomReveal = Math.max(0, Math.min(maxBottomReveal, value));
+      root.style.setProperty("--writing-bottom-reveal", `${bottomReveal}px`);
+    }
+
+    function isAtTop() {
+      return scrollBox.scrollTop <= 0;
+    }
+
+    function isAtBottom() {
+      return scrollBox.scrollTop + scrollBox.clientHeight >= scrollBox.scrollHeight - 1;
     }
 
     function onWheel(event) {
@@ -44,26 +67,33 @@ layout: base.njk
       const goingDown = event.deltaY > 0;
       const goingUp = event.deltaY < 0;
 
-      const atTopOfText = scrollBox.scrollTop <= 0;
-      const atBottomOfText =
-        scrollBox.scrollTop + scrollBox.clientHeight >= scrollBox.scrollHeight - 1;
-
       if (goingDown && cardOffset > minOffset) {
         setCardOffset(cardOffset - event.deltaY * cardSpeed);
         return;
       }
 
-      if (goingDown && !atBottomOfText) {
+      if (goingDown && !isAtBottom()) {
+        setBottomReveal(0);
         scrollBox.scrollTop += event.deltaY * textSpeed;
         return;
       }
 
-      if (goingUp && !atTopOfText) {
+      if (goingDown && isAtBottom() && bottomReveal < maxBottomReveal) {
+        setBottomReveal(bottomReveal + event.deltaY * revealSpeed);
+        return;
+      }
+
+      if (goingUp && bottomReveal > 0) {
+        setBottomReveal(bottomReveal + event.deltaY * revealSpeed);
+        return;
+      }
+
+      if (goingUp && !isAtTop()) {
         scrollBox.scrollTop += event.deltaY * textSpeed;
         return;
       }
 
-      if (goingUp && atTopOfText && cardOffset < startOffset) {
+      if (goingUp && isAtTop() && cardOffset < startOffset) {
         setCardOffset(cardOffset - event.deltaY * cardSpeed);
       }
     }
