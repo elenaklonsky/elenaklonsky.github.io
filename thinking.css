@@ -3,7 +3,7 @@
 
 .card--thinking,
 .card--writing {
-  width: min(640px, 100%);
+  width: min(760px, 100%);
 }
 
 .inner--thinking,
@@ -22,53 +22,55 @@
   margin-bottom: 18px;
 }
 
+/* writing index */
+
 .writing-list {
   list-style: none;
   margin: 18px 0 0;
   padding: 0;
   font-size: 0.78rem;
-  line-height: 1.5;
+  line-height: 1.42;
 }
 
-.writing-list li {
-  position: relative;
+.writing-list__item {
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.22);
+}
+
+.writing-list__link {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   align-items: center;
   gap: 18px;
-  min-height: 48px;
-  padding: 0.65rem 0;
-  border-bottom: 1px solid rgba(10, 10, 10, 0.22);
-}
-
-.writing-list a {
+  min-height: 52px;
+  padding: 0.72rem 0;
   color: inherit;
   text-decoration: none;
-  border-bottom: 1px solid currentColor;
-  line-height: 1.65;
+}
+
+.writing-list__title {
+  display: inline-block;
   width: fit-content;
   max-width: 100%;
-  position: static;
+  line-height: 1.45;
+  border-bottom: 1px solid currentColor;
 }
 
-.writing-list a::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-}
-
-.writing-list span {
+.writing-list__date {
   opacity: 0.62;
   white-space: nowrap;
-  pointer-events: none;
 }
 
 .writing-list__empty {
   opacity: 0.62;
 }
 
+/* writing pages */
+
 .writing-body {
-  max-width: 58ch;
+  max-width: 68ch;
+  margin-inline: auto;
 }
 
 .writing-body p {
@@ -105,28 +107,12 @@
   text-underline-offset: 0.08em;
 }
 
-@media (max-width: 560px) {
-  .card--thinking,
-  .card--writing {
-    width: min(100%, 100%);
-  }
-
-  .writing-list li {
-    grid-template-columns: 1fr;
-    gap: 0.15rem;
-    min-height: 56px;
-  }
-
-  .writing-list span {
-    display: block;
-    margin-top: 0.1rem;
-  }
-}
-
 /* writing images */
+
 .writing-body img {
   display: block;
-  max-width: 100%;
+  width: auto;
+  max-width: min(100%, 680px);
   height: auto;
   margin: 1.4rem auto 0.45rem;
   border: 1px solid rgba(10, 10, 10, 0.28);
@@ -144,4 +130,34 @@
   line-height: 1.35;
   text-align: center;
   opacity: 0.72;
+}
+
+@media (min-width: 900px) {
+  .writing-body img {
+    width: min(760px, 112%);
+    max-width: 112%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 560px) {
+  .card--thinking,
+  .card--writing {
+    width: min(100%, 100%);
+  }
+
+  .writing-list__link {
+    grid-template-columns: 1fr;
+    gap: 0.15rem;
+    min-height: 58px;
+  }
+
+  .writing-list__date {
+    display: block;
+  }
+
+  .writing-body {
+    max-width: none;
+  }
 }
