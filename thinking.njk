@@ -15,7 +15,7 @@ permalink: /thinking/
       <ul class="writing-list">
         {% for post in collections.writing %}
           <li>
-            <a href="../{{ post.url | stripLeadingSlash }}">{{ post.data.title }}</a>
+            <a href="../writing/{{ post.fileSlug }}/">{{ post.data.title }}</a>
             {% if post.data.date %}
               <span>{{ post.data.date | readableDate }}</span>
             {% endif %}
