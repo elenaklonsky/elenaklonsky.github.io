@@ -1,7 +1,7 @@
 ---
 title: " working notes: alt-compute / neuromorphic architectures"
 date: 2026-06-19
----
+--- 
 ## working notes: alt-compute and neuromorphic architectures
 [status: in progress. this is a rough outline + shapes of companies in an area i'm really interested in so far]
 
