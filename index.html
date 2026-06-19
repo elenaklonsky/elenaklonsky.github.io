@@ -31,6 +31,24 @@
         <a class="btn work" href="/thinking/">thinking</a>
         <a class="btn fun" href="#">doing</a>
       </div>
+
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/elena-klonsky/">linkedin</a>
+        <span class="dot">·</span>
+        <a href="https://substack.com/@elenaklonsky">substack</a>
+        <span class="dot">·</span>
+        <a href="#" id="email-link">email</a>
+      </div>
+      
+      <script>
+        // assemble the address in pieces so scrapers don't see a full mailto string
+        (function () {
+          var user = "elena";
+          var domain = "regen.vc";
+          var a = document.getElementById("email-link");
+          a.href = "mailto:" + user + "@" + domain;
+        })();
+      </script>
     </article>
   </main>
 </body>
