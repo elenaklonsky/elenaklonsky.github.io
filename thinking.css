@@ -239,9 +239,9 @@ body:has(.card--writing) .container {
 }
 
 .writing-body {
-  width: min(100%, 640px);
+  width: min(100%, 580px);
   max-width: none;
-  margin-left: 0;
+  margin-left: auto;
   margin-right: auto;
   text-align: left;
   padding: 0 0 24px;
@@ -334,6 +334,11 @@ body:has(.card--writing) .container {
   opacity: 0.72;
 }
 
+.card--writing .writing-body,
+.card--writing .writing-body * {
+  text-transform: none !important;
+}
+
 /* mobile */
 
 @media (max-width: 700px) {
@@ -415,3 +420,4 @@ body:has(.card--writing) .container {
     display: block;
   }
 }
+
