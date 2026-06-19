@@ -7,10 +7,12 @@ layout: base.njk
     <a class="writing-back" href="../../thinking/">back to thinking</a>
 
     <div class="inner inner--writing">
-      <h1>{{ title }}</h1>
-
-      <div class="bio writing-body">
-        {{ content | safe }}
+      <h1 class="writing-title">{{ title }}</h1>
+    
+      <div class="writing-scroll">
+        <div class="bio writing-body">
+          {{ content | safe }}
+        </div>
       </div>
     </div>
   </article>
