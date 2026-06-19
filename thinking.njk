@@ -15,7 +15,7 @@ permalink: /thinking/
       <ul class="writing-list">
         {% for post in collections.writing %}
           <li>
-            <a href="{{ post.url }}">{{ post.data.title }}</a>
+            <a href="../{{ post.url | stripLeadingSlash }}">{{ post.data.title }}</a>
             {% if post.data.date %}
               <span>{{ post.data.date | readableDate }}</span>
             {% endif %}
@@ -27,7 +27,7 @@ permalink: /thinking/
     </div>
 
     <div class="buttons buttons--single">
-      <a class="btn work" href="/">back to home</a>
+      <a class="btn work" href="../">back to home</a>
     </div>
   </article>
 </main>
