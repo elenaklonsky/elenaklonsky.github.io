@@ -1,5 +1,5 @@
 ---
-title: " working notes: alt-compute / neuromorphic architectures"
+title: " working notes: alt-compute and neuromorphic architectures"
 date: 2026-06-19
 --- 
 ## working notes: alt-compute and neuromorphic architectures
