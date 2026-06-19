@@ -213,7 +213,7 @@ body:has(.card--writing) .container {
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  margin-top: 78px;
+  margin-top: 48px;
   padding: 0 28px;
   overscroll-behavior: contain;
   scrollbar-width: none;
@@ -229,11 +229,10 @@ body:has(.card--writing) .container {
 .writing-scroll::after {
   content: "";
   display: block;
-  width: calc(100% + 56px);
-  margin-left: -28px;
-  margin-top: 28px;
-  margin-bottom: 42px;
+  width: 100%;
+  margin: 28px 0 42px;
   border-bottom: 1px solid rgba(10, 10, 10, 0.55);
+}
 }
 
 .writing-body {
