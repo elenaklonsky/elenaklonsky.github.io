@@ -242,6 +242,11 @@ body:has(.card--writing) .container {
   opacity: 0.72;
 }
 
+/* body text font override */
+.writing-body {
+  font-family: Futura, "Futura PT", "Trebuchet MS", Arial, sans-serif;
+}
+
 /* mobile */
 
 @media (max-width: 700px) {
