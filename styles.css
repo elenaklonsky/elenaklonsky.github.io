@@ -94,10 +94,10 @@ body::after {
 
 /* outer card */
 .card {
-  width: min(405px, 100%);
+  width: min(520px, 100%);
   background: var(--paper);
   border: 1px solid var(--ink);
-  padding: 28px 18px 20px;
+  padding: 36px 24px 28px;
   position: relative;
   box-shadow:
     0 0 0 0.35px rgba(41, 36, 30, 0.72),
@@ -110,7 +110,7 @@ body::after {
   position: relative;
   z-index: 1;
   margin-bottom: 0;
-  padding: 28px 16px 64px;
+  padding: 36px 24px 72px;
   border: 1px solid rgba(10, 10, 10, 0.62);
   background:
     linear-gradient(rgba(255,255,255,0.04), rgba(255,255,255,0.01)),
@@ -125,7 +125,7 @@ h1 {
   transform: translateX(-50%);
   margin: 0;
   padding: 0 14px;
-  font-size: 1.12rem;
+  font-size: 1.18rem;
   line-height: 1;
   font-weight: 400;
   font-style: italic;
@@ -139,8 +139,8 @@ h1 {
 /* body copy */
 .bio {
   margin: 10px 0 0;
-  font-size: 0.78rem;
-  line-height: 1.42;
+  font-size: 0.82rem;
+  line-height: 1.5;
   text-align: left;
   max-width: none;
 }
@@ -159,7 +159,7 @@ h1 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  padding-inline: 44px;
+  padding-inline: 60px;
   margin-top: -48px;
   align-items: end;
 }
@@ -173,7 +173,7 @@ h1 {
   align-self: end;
   text-decoration: none;
   color: var(--ink);
-  font-size: 0.78rem;
+  font-size: 0.82rem;
   line-height: 1;
   border: 1px solid rgba(10, 10, 10, 0.55);
   box-shadow:
@@ -221,34 +221,34 @@ h1 {
   }
 
   .card {
-    width: min(380px, 100%);
-    padding: 24px 15px 18px;
+    width: min(440px, 100%);
+    padding: 28px 16px 20px;
   }
 
   .inner {
-    padding: 24px 14px 56px;
+    padding: 28px 14px 60px;
   }
 
   h1 {
     top: -9px;
-    font-size: 1rem;
+    font-size: 1.05rem;
     padding: 0 10px;
   }
 
   .bio {
     margin-top: 8px;
-    font-size: 0.75rem;
-    line-height: 1.4;
+    font-size: 0.78rem;
+    line-height: 1.45;
   }
 
   .buttons {
     gap: 10px;
-    padding-inline: 28px;
-    margin-top: -40px;
+    padding-inline: 36px;
+    margin-top: -42px;
   }
 
   .btn {
     padding: 14px 12px;
-    font-size: 0.74rem;
+    font-size: 0.76rem;
   }
 }
