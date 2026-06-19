@@ -74,66 +74,6 @@ body::after {
   mix-blend-mode: soft-light;
 }
 
-/* site frame */
-.site-border {
-  position: fixed;
-  inset: 6px;
-  pointer-events: none;
-  z-index: 20;
-  border: 1px solid rgba(41, 36, 30, 0.78);
-  box-shadow: inset 0 0 0 1px rgba(41, 36, 30, 0.34);
-}
-
-.site-border::before,
-.site-border::after {
-  content: "";
-  position: absolute;
-  left: 6px;
-  right: 6px;
-  height: 12px;
-  background: url("./images/tile.svg") repeat-x center;
-  background-size: 32px 12px;
-  opacity: 0.92;
-}
-
-.site-border::before {
-  top: 2px;
-}
-
-.site-border::after {
-  bottom: 2px;
-}
-
-.site-border__side {
-  position: absolute;
-  top: 22px;
-  bottom: 22px;
-  width: 12px;
-  opacity: 0.92;
-  overflow: hidden;
-}
-
-.site-border__side::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: calc(100vh + 220px);
-  height: 12px;
-  background: url("./images/tile.svg") repeat-x center;
-  background-size: 32px 12px;
-  transform: translate(-50%, -50%) rotate(90deg);
-  transform-origin: center;
-}
-
-.site-border__side--left {
-  left: 2px;
-}
-
-.site-border__side--right {
-  right: 2px;
-}
-
 /* toggle ornaments off */
 .site-border.is-plain::before,
 .site-border.is-plain::after {
