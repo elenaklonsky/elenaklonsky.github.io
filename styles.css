@@ -26,6 +26,8 @@ body {
   --olive: #7d8759;
   --lavender: #ccb8d4;
   --hover-yellow: #fecf43;
+  --terracotta: #f4442e;
+  --mahogany: #4e0d04;
 }
 
 body {
@@ -212,24 +214,24 @@ h1 {
 }
 
 .footer-links {
-  margin-top: 1.5rem;
+  margin-top: 1.3rem;
   text-align: center;
   font-family: "Futura", "Futura PT", "Century Gothic", sans-serif;
   font-style: italic;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   letter-spacing: 0.02em;
 }
 .footer-links a {
-  color: #29241e;
+  color: var(--mahogany);
   text-decoration: none;
   border-bottom: 1px solid transparent;
 }
 .footer-links a:hover {
-  color: #fecf43;
+  color: var(--terracotta);
   border-bottom-color: currentColor;
 }
 .footer-links .dot {
-  color: #aaa;
+  color: var(--mahogany);
   margin: 0 0.35em;
 }
 
