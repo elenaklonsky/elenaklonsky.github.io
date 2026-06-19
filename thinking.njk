@@ -16,6 +16,12 @@ permalink: /thinking/
         {% for post in collections.writing %}
           <li>
             <a href="../writing/{{ post.fileSlug }}/">{{ post.data.title }}</a>
+            <br>
+            <small>
+              fileSlug: {{ post.fileSlug }} |
+              url: {{ post.url }} |
+              input: {{ post.inputPath }}
+            </small>
             {% if post.data.date %}
               <span>{{ post.data.date | readableDate }}</span>
             {% endif %}
