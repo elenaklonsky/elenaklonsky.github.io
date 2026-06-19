@@ -19,7 +19,7 @@ body {
 }
 
 :root {
-  --bg-blue: #6a97ff;
+  --bg-blue: #6d88ea;
   --paper: #f4eedf;
   --ink: #0a0a0a;
   --carbon: #29241e;
@@ -41,6 +41,13 @@ body {
   text-transform: lowercase;
   color: var(--ink);
   background: var(--bg-blue);
+}
+body.home {
+  background-image: url("images/bg.jpg");
+  background-size: cover;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 /* fine monochrome grain */
