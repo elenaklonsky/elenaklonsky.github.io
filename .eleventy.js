@@ -5,8 +5,12 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("fonts");
 
   eleventyConfig.addFilter("readableDate", function(dateObj) {
-    return new Date(dateObj).getFullYear();
+  return new Date(dateObj).toLocaleDateString("en-GB", {
+    day: "numeric",
+    month: "long",
+    year: "numeric"
   });
+});
 
   eleventyConfig.addFilter("stripLeadingSlash", function(value) {
     return String(value || "").replace(/^\/+/, "");
