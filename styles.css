@@ -252,3 +252,23 @@ h1 {
     font-size: 0.76rem;
   }
 }
+.footer-links {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-family: "Futura", "Futura PT", "Century Gothic", sans-serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+.footer-links a {
+  color: #6b6b5e;          /* muted, tweak to taste */
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.footer-links a:hover {
+  border-bottom-color: currentColor;
+}
+.footer-links .dot {
+  color: #aaa;
+  margin: 0 0.5em;
+}
