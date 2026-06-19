@@ -94,17 +94,7 @@
 @media (max-width: 560px) {
   .card--thinking,
   .card--writing {
-    width: min(420px, 100%);
-  }
-
-  .inner--thinking,
-  .inner--writing {
-    min-height: 380px;
-    padding-bottom: 64px;
-  }
-
-  .buttons--single {
-    max-width: 170px;
+    width: min(100%, 100%);
   }
 
   .writing-list li {
@@ -113,6 +103,29 @@
 
   .writing-list span {
     display: block;
-    margin-top: 0.18rem;
+    margin-top: 0.2rem;
   }
+}
+
+/* writing images */
+.writing-body img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 1.4rem auto 0.45rem;
+  border: 1px solid rgba(10, 10, 10, 0.28);
+}
+
+.writing-body p:has(img) {
+  margin: 1.8rem 0 0.4rem;
+}
+
+.writing-body p:has(img) + p em {
+  display: block;
+  max-width: 92%;
+  margin: 0 auto 1.4rem;
+  font-size: 0.72rem;
+  line-height: 1.35;
+  text-align: center;
+  opacity: 0.72;
 }
