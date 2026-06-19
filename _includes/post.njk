@@ -4,11 +4,11 @@ layout: base.njk
 
 <main class="container">
   <article class="card card--writing">
-    <a class="writing-back" href="../../thinking/">back to thinking</a>
+    <a class="page-back" href="../../thinking/">back</a>
 
     <div class="inner inner--writing">
       <h1 class="writing-title">{{ title }}</h1>
-    
+
       <div class="writing-scroll">
         <div class="bio writing-body">
           {{ content | safe }}
@@ -21,9 +21,9 @@ layout: base.njk
 <script>
   (() => {
     const root = document.documentElement;
-    const writingBody = document.querySelector(".writing-body");
+    const scrollBox = document.querySelector(".writing-scroll");
 
-    if (!writingBody || window.matchMedia("(max-width: 700px)").matches) return;
+    if (!scrollBox || window.matchMedia("(max-width: 700px)").matches) return;
 
     const startOffset = 88;
     const minOffset = 0;
@@ -44,9 +44,9 @@ layout: base.njk
       const goingDown = event.deltaY > 0;
       const goingUp = event.deltaY < 0;
 
-      const atTopOfText = writingBody.scrollTop <= 0;
+      const atTopOfText = scrollBox.scrollTop <= 0;
       const atBottomOfText =
-        writingBody.scrollTop + writingBody.clientHeight >= writingBody.scrollHeight - 1;
+        scrollBox.scrollTop + scrollBox.clientHeight >= scrollBox.scrollHeight - 1;
 
       if (goingDown && cardOffset > minOffset) {
         setCardOffset(cardOffset - event.deltaY * cardSpeed);
@@ -54,12 +54,12 @@ layout: base.njk
       }
 
       if (goingDown && !atBottomOfText) {
-        writingBody.scrollTop += event.deltaY * textSpeed;
+        scrollBox.scrollTop += event.deltaY * textSpeed;
         return;
       }
 
       if (goingUp && !atTopOfText) {
-        writingBody.scrollTop += event.deltaY * textSpeed;
+        scrollBox.scrollTop += event.deltaY * textSpeed;
         return;
       }
 
