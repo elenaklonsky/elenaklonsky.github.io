@@ -2,7 +2,7 @@
 title: the shape of explanations
 date: 2026-06-19
 ---
-## The Shape of Explanations 
+## The Shape of Explanations  
 
 *Anthrogen releases Odyssey1, Fei-Fei Li evangelises Spatial Intelligence and the universe breaks me brain.*
 
