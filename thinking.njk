@@ -3,6 +3,7 @@ layout: base.njk
 title: thinking
 permalink: /thinking/
 ---
+
 <main class="container">
   <article class="card card--thinking">
     <div class="inner inner--thinking">
@@ -13,12 +14,14 @@ permalink: /thinking/
       </div>
 
       <ul class="writing-list">
-        {% for post in collections.writing %}
-          <li>
-            <a href="../writing/{{ post.fileSlug }}/">{{ post.data.title }}</a>
-            {% if post.data.date %}
-              <span>{{ post.data.date | readableDate }}</span>
-            {% endif %}
+        {% for post in collections.writing | reverse %}
+          <li class="writing-list__item">
+            <a class="writing-list__link" href="{{ post.url | url }}">
+              <span class="writing-list__title">{{ post.data.title }}</span>
+              {% if post.data.date %}
+                <span class="writing-list__date">{{ post.data.date | readableDate }}</span>
+              {% endif %}
+            </a>
           </li>
         {% else %}
           <li class="writing-list__empty">no writing published yet.</li>
