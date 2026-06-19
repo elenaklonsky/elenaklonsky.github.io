@@ -1,6 +1,7 @@
 ---
 layout: base.njk
 ---
+
 <main class="container">
   <article class="card card--writing">
     <div class="inner inner--writing">
@@ -16,3 +17,39 @@ layout: base.njk
     </div>
   </article>
 </main>
+
+<script>
+  (() => {
+    const card = document.querySelector(".card--writing");
+    const body = document.querySelector(".writing-body");
+
+    if (!card || !body || window.matchMedia("(max-width: 700px)").matches) return;
+
+    const stickyTop = 14;
+
+    body.addEventListener("wheel", (event) => {
+      const cardTop = card.getBoundingClientRect().top;
+      const cardHasNotReachedTop = cardTop > stickyTop + 1;
+
+      if (cardHasNotReachedTop && event.deltaY > 0) {
+        event.preventDefault();
+        window.scrollBy({ top: event.deltaY, left: 0 });
+        return;
+      }
+
+      const atTop = body.scrollTop <= 0;
+      const atBottom = body.scrollTop + body.clientHeight >= body.scrollHeight - 1;
+
+      if (event.deltaY < 0 && atTop) {
+        event.preventDefault();
+        window.scrollBy({ top: event.deltaY, left: 0 });
+        return;
+      }
+
+      if (event.deltaY > 0 && !atBottom) {
+        event.preventDefault();
+        body.scrollTop += event.deltaY;
+      }
+    }, { passive: false });
+  })();
+</script>
