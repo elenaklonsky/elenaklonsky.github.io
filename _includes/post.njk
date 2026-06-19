@@ -18,50 +18,54 @@ layout: base.njk
 
 <script>
   (() => {
-    const card = document.querySelector(".card--writing");
+    const root = document.documentElement;
     const writingBody = document.querySelector(".writing-body");
 
-    if (!card || !writingBody || window.matchMedia("(max-width: 700px)").matches) return;
+    if (!writingBody || window.matchMedia("(max-width: 700px)").matches) return;
 
-    const stickyTop = 0;
-    const scrollSpeed = 0.55;
+    const startOffset = 88;
+    const minOffset = 0;
+    const cardSpeed = 0.65;
+    const textSpeed = 0.45;
 
-    writingBody.addEventListener("wheel", (event) => {
-      const cardTop = card.getBoundingClientRect().top;
-      const cardHasNotReachedTop = cardTop > stickyTop + 1;
+    let cardOffset = startOffset;
+    root.style.setProperty("--writing-card-offset", `${cardOffset}px`);
 
-      if (cardHasNotReachedTop && event.deltaY > 0) {
-        event.preventDefault();
-        window.scrollBy({
-          top: event.deltaY,
-          left: 0
-        });
-        return;
-      }
+    function setCardOffset(value) {
+      cardOffset = Math.max(minOffset, Math.min(startOffset, value));
+      root.style.setProperty("--writing-card-offset", `${cardOffset}px`);
+    }
 
-      const atTop = writingBody.scrollTop <= 0;
-      const atBottom =
+    function onWheel(event) {
+      event.preventDefault();
+
+      const goingDown = event.deltaY > 0;
+      const goingUp = event.deltaY < 0;
+
+      const atTopOfText = writingBody.scrollTop <= 0;
+      const atBottomOfText =
         writingBody.scrollTop + writingBody.clientHeight >= writingBody.scrollHeight - 1;
 
-      if (event.deltaY < 0 && atTop) {
-        event.preventDefault();
-        window.scrollBy({
-          top: event.deltaY,
-          left: 0
-        });
+      if (goingDown && cardOffset > minOffset) {
+        setCardOffset(cardOffset - event.deltaY * cardSpeed);
         return;
       }
 
-      if (event.deltaY > 0 && !atBottom) {
-        event.preventDefault();
-        writingBody.scrollTop += event.deltaY * scrollSpeed;
+      if (goingDown && !atBottomOfText) {
+        writingBody.scrollTop += event.deltaY * textSpeed;
         return;
       }
 
-      if (event.deltaY < 0 && !atTop) {
-        event.preventDefault();
-        writingBody.scrollTop += event.deltaY * scrollSpeed;
+      if (goingUp && !atTopOfText) {
+        writingBody.scrollTop += event.deltaY * textSpeed;
+        return;
       }
-    }, { passive: false });
+
+      if (goingUp && atTopOfText && cardOffset < startOffset) {
+        setCardOffset(cardOffset - event.deltaY * cardSpeed);
+      }
+    }
+
+    window.addEventListener("wheel", onWheel, { passive: false });
   })();
 </script>
