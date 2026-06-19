@@ -339,6 +339,10 @@ body:has(.card--writing) .container {
   text-transform: none !important;
 }
 
+body:has(.card--writing) {
+  background: var(--olive);
+}
+
 /* mobile */
 
 @media (max-width: 700px) {
