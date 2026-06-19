@@ -1,0 +1,18 @@
+---
+layout: base.njk
+---
+<main class="container">
+  <article class="card card--writing">
+    <div class="inner inner--writing">
+      <h1>{{ title }}</h1>
+
+      <div class="bio writing-body">
+        {{ content | safe }}
+      </div>
+    </div>
+
+    <div class="buttons buttons--single">
+      <a class="btn work" href="/thinking/">back to thinking</a>
+    </div>
+  </article>
+</main>

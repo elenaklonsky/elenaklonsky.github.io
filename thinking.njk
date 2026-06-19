@@ -1,0 +1,33 @@
+---
+layout: base.njk
+title: thinking
+permalink: /thinking/
+---
+<main class="container">
+  <article class="card card--thinking">
+    <div class="inner inner--thinking">
+      <h1>thinking</h1>
+
+      <div class="bio thinking-intro">
+        writing, notes, fragments, etc.
+      </div>
+
+      <ul class="writing-list">
+        {% for post in collections.writing %}
+          <li>
+            <a href="{{ post.url }}">{{ post.data.title }}</a>
+            {% if post.data.date %}
+              <span>{{ post.data.date | readableDate }}</span>
+            {% endif %}
+          </li>
+        {% else %}
+          <li class="writing-list__empty">no writing published yet.</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <div class="buttons buttons--single">
+      <a class="btn work" href="/">back to home</a>
+    </div>
+  </article>
+</main>

@@ -1,0 +1,118 @@
+/* Page-specific styles for /thinking/ and individual writing pages.
+   This file is additive. It does not require changes to your existing styles.css. */
+
+.card--thinking,
+.card--writing {
+  width: min(640px, 100%);
+}
+
+.inner--thinking,
+.inner--writing {
+  min-height: 430px;
+  padding-bottom: 76px;
+}
+
+.buttons--single {
+  grid-template-columns: 1fr;
+  max-width: 190px;
+  margin-inline: auto;
+}
+
+.thinking-intro {
+  margin-bottom: 18px;
+}
+
+.writing-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  font-size: 0.78rem;
+  line-height: 1.42;
+}
+
+.writing-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 0.52rem 0;
+  border-bottom: 1px solid rgba(10, 10, 10, 0.22);
+}
+
+.writing-list a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.08em;
+}
+
+.writing-list span {
+  opacity: 0.62;
+  white-space: nowrap;
+}
+
+.writing-list__empty {
+  opacity: 0.62;
+}
+
+.writing-body {
+  max-width: 58ch;
+}
+
+.writing-body p {
+  margin: 0 0 1em;
+}
+
+.writing-body h2,
+.writing-body h3 {
+  margin: 1.6em 0 0.6em;
+  font-size: 0.92rem;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.writing-body ul,
+.writing-body ol {
+  margin: 0 0 1em;
+  padding-left: 1.2em;
+}
+
+.writing-body li {
+  margin-bottom: 0.35em;
+}
+
+.writing-body blockquote {
+  margin: 1em 0;
+  padding-left: 1em;
+  border-left: 1px solid rgba(10, 10, 10, 0.35);
+}
+
+.writing-body a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.08em;
+}
+
+@media (max-width: 560px) {
+  .card--thinking,
+  .card--writing {
+    width: min(420px, 100%);
+  }
+
+  .inner--thinking,
+  .inner--writing {
+    min-height: 380px;
+    padding-bottom: 64px;
+  }
+
+  .buttons--single {
+    max-width: 170px;
+  }
+
+  .writing-list li {
+    display: block;
+  }
+
+  .writing-list span {
+    display: block;
+    margin-top: 0.18rem;
+  }
+}
