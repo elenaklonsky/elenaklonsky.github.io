@@ -97,7 +97,7 @@ body {
 .writing-list__link {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
-  align-items: baseline;
+  align-items: center;
   gap: 18px;
   min-height: 52px;
   padding: 0.72rem 0;
