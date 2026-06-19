@@ -211,6 +211,27 @@ h1 {
     0 0.5px 0 rgba(10, 10, 10, 0.08);
 }
 
+.footer-links {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-family: "Futura", "Futura PT", "Century Gothic", sans-serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  letter-spacing: 0.02em;
+}
+.footer-links a {
+  color: #29241e;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.footer-links a:hover {
+  border-bottom-color: currentColor;
+}
+.footer-links .dot {
+  color: #aaa;
+  margin: 0 0.35em;
+}
+
 @media (max-width: 560px) {
   body {
     padding: 18px;
@@ -251,24 +272,4 @@ h1 {
     padding: 14px 12px;
     font-size: 0.76rem;
   }
-}
-.footer-links {
-  margin-top: 1.5rem;
-  text-align: center;
-  font-family: "Futura", "Futura PT", "Century Gothic", sans-serif;
-  font-style: italic;
-  font-size: 0.9rem;
-  letter-spacing: 0.02em;
-}
-.footer-links a {
-  color: #6b6b5e;          /* muted, tweak to taste */
-  text-decoration: none;
-  border-bottom: 1px solid transparent;
-}
-.footer-links a:hover {
-  border-bottom-color: currentColor;
-}
-.footer-links .dot {
-  color: #aaa;
-  margin: 0 0.5em;
 }
