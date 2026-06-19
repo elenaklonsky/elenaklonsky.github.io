@@ -229,9 +229,12 @@ body:has(.card--writing) .container {
 .writing-scroll::after {
   content: "";
   display: block;
-  width: 100%;
-  margin: 28px 0 42px;
+  width: calc(100% + 4px);
+  margin: 28px -2px 42px;
   border-bottom: 1px solid rgba(10, 10, 10, 0.55);
+  background: var(--paper, #f4eedf);
+  height: 2px;
+};
 }
 }
 
@@ -271,7 +274,6 @@ body:has(.card--writing) .container {
   font-size: 0.92rem;
   line-height: 1.2;
   font-weight: 500;
-  font-family: Futura, "Futura PT", "Trebuchet MS", Arial, sans-serif !important;
 }
 
 .writing-body ul,
