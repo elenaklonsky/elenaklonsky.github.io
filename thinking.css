@@ -236,8 +236,6 @@ body:has(.card--writing) .container {
   margin-bottom: 42px;
   border-bottom: 1px solid rgba(10, 10, 10, 0.55);
 };
-}
-}
 
 .writing-body {
   width: min(100%, 580px);
