@@ -3,12 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title> doing </title>
+  <title>doing</title>
   <link rel="stylesheet" href="/styles.css" />
-   <style>
-    /* doing page styles */ 
-
-    /* --- back button (copied from thinking.css) --- */
+  <style>
+    /* doing page styles */
+    /* --- back button --- */
     .page-back,
     .page-back:visited {
       position: absolute;
@@ -37,44 +36,40 @@
         transform 190ms cubic-bezier(0.2, 0.9, 0.25, 1.05),
         box-shadow 180ms ease,
         filter 180ms ease;
-}
-.page-back:hover {
-  background: var(--olive);
-  color: var(--ink, #0a0a0a) !important;
-  transform: translateY(0) scaleX(1.01) scaleY(0.975);
-  box-shadow:
-    0 0 0 0.35px rgba(10, 10, 10, 0.34),
-    1px 1px 0 rgba(41, 36, 30, 0.22);
-}
-.page-back:active {
-  transform: translateY(1px) scaleX(1.015) scaleY(0.94);
-  box-shadow:
-    0 0 0 0.35px rgba(10, 10, 10, 0.26),
-    0 0.5px 0 rgba(10, 10, 10, 0.08);
-}
-/* --- taller card --- */
-.card--doing {
-  width: min(640px, 100%);
-}
-.inner--doing {
-  min-height: 600px;       /* tune; or delete to let it size to content */
-  padding: 36px 24px 48px;
-}
-body:has(.card--doing) {
-  background: var(--terracotta);
-}
+    }
+    .page-back:hover {
+      background: var(--olive);
+      color: var(--ink, #0a0a0a) !important;
+      transform: translateY(0) scaleX(1.01) scaleY(0.975);
+      box-shadow:
+        0 0 0 0.35px rgba(10, 10, 10, 0.34),
+        1px 1px 0 rgba(41, 36, 30, 0.22);
+    }
+    .page-back:active {
+      transform: translateY(1px) scaleX(1.015) scaleY(0.94);
+      box-shadow:
+        0 0 0 0.35px rgba(10, 10, 10, 0.26),
+        0 0.5px 0 rgba(10, 10, 10, 0.08);
+    }
+    /* --- taller card --- */
+    .card--doing {
+      width: min(640px, 100%);
+    }
+    .inner--doing {
+      min-height: 600px;
+      padding: 36px 24px 48px;
+    }
+    body:has(.card--doing) {
+      background: var(--terracotta);
+    }
   </style>
 </head>
-  <style>
-</head>
-  <body>
+<body>
   <div class="site-border is-plain" aria-hidden="true">
     <div class="site-border__side site-border__side--left"></div>
     <div class="site-border__side site-border__side--right"></div>
   </div>
-
   <a class="page-back" href="/">back</a>
-
   <main class="container">
     <article class="card card--doing">
       <div class="inner inner--doing">
