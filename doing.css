@@ -31,6 +31,7 @@
     filter 180ms ease;
 }
 
+
 .page-back:hover {
   background: var(--terracotta);
   color: var(--ink, #0a0a0a) !important;
@@ -55,4 +56,8 @@
 .inner--doing {
   min-height: 600px;       /* tune; or delete to let it size to content */
   padding: 36px 24px 48px;
+}
+
+body:has(.card--doing) {
+  background: var(--terracotta);
 }
