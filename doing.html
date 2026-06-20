@@ -53,7 +53,7 @@
     }
     /* --- taller card --- */
     .card--doing {
-      width: min(720px, 100%);
+      width: min(760px, 100%);
     }
     .inner--doing {
       min-height: 600px;
@@ -61,6 +61,26 @@
     }
     body:has(.card--doing) {
       background: var(--terracotta);
+    }
+    /* --- asterisk bullet lists --- */
+    ul.bio {
+      list-style: none;
+      margin: 8px 0 0;
+      padding-left: 0;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      text-align: left;
+    }
+    ul.bio li {
+      position: relative;
+      padding-left: 1.3em;
+      margin-bottom: 0.3em;
+    }
+    ul.bio li::before {
+      content: "*";
+      position: absolute;
+      left: 0;
+      top: 0.05em;
     }
   </style>
 </head>
@@ -74,8 +94,31 @@
     <article class="card card--doing">
       <div class="inner inner--doing">
         <h1>doing</h1>
-        <p class="bio">your content here…</p>
-        <p class="bio">more content…</p>
+
+        <p class="bio">a lot of people assume i moved to brunswick heads (pop: 3000!) to work at regen. the truth is i was a burnout high achiever who ended up here by accident.</p>
+
+        <ul class="bio">
+          <li>travelled by scoopy from java to sumbawa</li>
+          <li>surfed the biggest waves of my life</li>
+          <li>worked in a pub, a brewery, and on my parents' gardening app</li>
+          <li>helped deliver flood relief to families hit by the victoria floods</li>
+          <li>made some art, wrote some stories</li>
+          <li>lived in a huntsman-infested ohana in upcountry maui</li>
+        </ul>
+
+        <p class="bio">then, by serendipity (and probably persistence), i met dan and tom in the northern rivers. they took a chance on me and let me come in basically unscripted to a part-time role at regen. that turned into what i do now. since then i've:</p>
+
+        <ul class="bio">
+          <li>developed regen/onto's intellectual and creative identity as we've grown</li>
+          <li>conceived and wrote our physical publications (notably the manifesto), built our four-pillar thesis, and set our editorial direction</li>
+          <li>led and supported diligence and investment in some genuinely world-changing humans — ulysses, anthrogen, differential, hum, the electric plant company</li>
+          <li>co-built a no-strings fellowship program with sam, funding people pre-formation to take an idea to its most ambitious form</li>
+          <li>made an app that blocks out the optimal time each day to become unreachable in the ocean (the alpha is proprietary)</li>
+        </ul>
+
+        <p class="bio"><strong>people whose work i like!</strong><br>
+        michael levin, henrik karlsson, david deutsch, kevin kelly, stewart brand, jane jacobs, karl polanyi, patrick collison, peter thiel, w. brian arthur, césar hidalgo, michael nielsen</p>
+
       </div>
     </article>
   </main>
