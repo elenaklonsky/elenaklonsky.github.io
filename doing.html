@@ -5,9 +5,69 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title> doing </title>
   <link rel="stylesheet" href="/styles.css" />
-  <link rel="stylesheet" href="/doing.css" />
+   <style>
+    /* doing page styles */ 
+
+    /* --- back button (copied from thinking.css) --- */
+    .page-back,
+    .page-back:visited {
+      position: absolute;
+      top: 24px;
+      left: 38px;
+      z-index: 160;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 58px;
+      height: 34px;
+      padding: 0 12px;
+      background: var(--bg-blue);
+      color: var(--ink, #0a0a0a) !important;
+      border: 1px solid rgba(10, 10, 10, 0.65);
+      box-shadow:
+        0 0 0 0.35px rgba(10, 10, 10, 0.34),
+        2px 2px 0 rgba(41, 36, 30, 0.28);
+      text-decoration: none;
+      font-size: 0.72rem;
+      line-height: 1;
+      transform: translateY(0) scaleX(1) scaleY(1);
+      transform-origin: center center;
+      transition:
+        background-color 180ms ease,
+        transform 190ms cubic-bezier(0.2, 0.9, 0.25, 1.05),
+        box-shadow 180ms ease,
+        filter 180ms ease;
+}
+.page-back:hover {
+  background: var(--olive);
+  color: var(--ink, #0a0a0a) !important;
+  transform: translateY(0) scaleX(1.01) scaleY(0.975);
+  box-shadow:
+    0 0 0 0.35px rgba(10, 10, 10, 0.34),
+    1px 1px 0 rgba(41, 36, 30, 0.22);
+}
+.page-back:active {
+  transform: translateY(1px) scaleX(1.015) scaleY(0.94);
+  box-shadow:
+    0 0 0 0.35px rgba(10, 10, 10, 0.26),
+    0 0.5px 0 rgba(10, 10, 10, 0.08);
+}
+/* --- taller card --- */
+.card--doing {
+  width: min(640px, 100%);
+}
+.inner--doing {
+  min-height: 600px;       /* tune; or delete to let it size to content */
+  padding: 36px 24px 48px;
+}
+body:has(.card--doing) {
+  background: var(--terracotta);
+}
+  </style>
 </head>
-<body>
+  <style>
+</head>
+  <body>
   <div class="site-border is-plain" aria-hidden="true">
     <div class="site-border__side site-border__side--left"></div>
     <div class="site-border__side site-border__side--right"></div>
