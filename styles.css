@@ -57,8 +57,8 @@ body::before {
   inset: 0;
   z-index: 0;
   background: url("images/paper.png");
-  background-size: 300px;
-  mix-blend-mode: soft-light;
+  background-size: cover;
+  mix-blend-mode: multiply;
   opacity: 1;
   pointer-events: none;
 }
