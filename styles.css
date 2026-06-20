@@ -52,35 +52,15 @@ body.home {
 
 /* fine monochrome grain */
 body::before {
-  content: "";
+ content: "";
   position: fixed;
   inset: 0;
-  pointer-events: none;
-  background: url("./images/grain.png") center / 170px 170px repeat;
-  opacity: 0.045;
-  mix-blend-mode: multiply;
-}
-
-/* broader blue grain */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: url("./images/grain2.png") center / 680px 680px repeat;
-  opacity: 0.24;
+  z-index: -1;
+  background: url("images/paper.png");
+  background-size: 300px;
   mix-blend-mode: soft-light;
-}
-
-/* extra neutral texture */
-.bg-texture {
-  position: fixed;
-  inset: 0;
+  opacity: 0.2;
   pointer-events: none;
-  z-index: 0;
-  background: url("./images/texture.jpg") center / 260px 260px repeat;
-  opacity: 0.1;
-  mix-blend-mode: soft-light;
 }
 
 /* toggle ornaments off */
