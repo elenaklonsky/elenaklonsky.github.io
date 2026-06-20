@@ -59,7 +59,7 @@ body::before {
   background: url("images/paper.png");
   background-size: 300px;
   mix-blend-mode: soft-light;
-  opacity: .4;
+  opacity: 1;
   pointer-events: none;
 }
 
