@@ -57,18 +57,18 @@ body::before {
   inset: 0;
   z-index: -1;
   background: url("images/paper.png");
-  background-size: cover;        /* fine tile, good over the photo */
-  background-repeat: no-repeat;
+  background-size: 200px;        /* fine tile, good over the photo */
+  background-repeat: repeat;
   mix-blend-mode: soft-light;
-  opacity: 0.3;
+  opacity: 0.2;
   pointer-events: none;
 }
 
 /* inner flat-color pages — bigger grain, no obvious tiling */
 body:not(.home)::before {
-  background-size: 600px;        /* chunkier; swap to cover if you want it stretched */
-  mix-blend-mode: overlay;       /* punchier than soft-light over flat mid-tones */
-  opacity: 0.35;
+  background-size: cover;        /* chunkier; swap to cover if you want it stretched */
+  mix-blend-mode: soft-light;       /* punchier than soft-light over flat mid-tones */
+  opacity: 0.5;
 }
 
 /* toggle ornaments off */
