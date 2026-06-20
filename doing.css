@@ -33,7 +33,7 @@
 
 
 .page-back:hover {
-  background: var(--terracotta);
+  background: var(--olive);
   color: var(--ink, #0a0a0a) !important;
   transform: translateY(0) scaleX(1.01) scaleY(0.975);
   box-shadow:
