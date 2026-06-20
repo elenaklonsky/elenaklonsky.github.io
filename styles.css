@@ -50,25 +50,18 @@ body.home {
   background-attachment: fixed;
 }
 
-/* base — applies everywhere, tuned for the home photo */
-body::before {
+/* inner flat-color pages — bigger grain, no obvious tiling */
+body:not(.home)::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -1;
   background: url("images/paper.png");
-  background-size: 200px;        /* fine tile, good over the photo */
+  background-size: 600px;
   background-repeat: repeat;
-  mix-blend-mode: soft-light;
-  opacity: 0.2;
+  mix-blend-mode: overlay;
+  opacity: 0.45;
   pointer-events: none;
-}
-
-/* inner flat-color pages — bigger grain, no obvious tiling */
-body:not(.home)::before {
-  background-size: cover;        /* chunkier; swap to cover if you want it stretched */
-  mix-blend-mode: soft-light;       /* punchier than soft-light over flat mid-tones */
-  opacity: 0.5;
 }
 
 /* toggle ornaments off */
@@ -106,10 +99,10 @@ body:not(.home)::before {
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 0;
+  z-index: 4;
   background: url("images/paper.png");
   background-size: 120px;
-  mix-blend-mode: multiply;
+  mix-blend-mode: soft-light;
   opacity: 0.12;
   pointer-events: none;
 }
