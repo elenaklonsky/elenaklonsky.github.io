@@ -43,7 +43,7 @@ body {
   background: var(--bg-blue);
 }
 body.home {
-  background-image: url("images/bg.jpg");
+  background-image: url("images/bg-copy.jpg");
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
@@ -51,7 +51,7 @@ body.home {
 }
 
 /* inner flat-color pages — bigger grain, no obvious tiling */
-body:not(.home)::before {
+body::before {
   content: "";
   position: fixed;
   inset: 0;
