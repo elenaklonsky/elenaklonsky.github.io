@@ -58,8 +58,8 @@ body::before {
   z-index: -1;
   background: url("images/paper.png");
   background-size: 300px;
-  mix-blend-mode: soft-light;
-  opacity: 0.2;
+  mix-blend-mode: normal;
+  opacity: 1;
   pointer-events: none;
 }
 
