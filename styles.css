@@ -43,7 +43,7 @@ body {
   background: var(--bg-blue);
 }
 body.home {
-  background-image: url("images/bg-copy.jpg");
+  background-image: url("images/bg-copy.png");
   background-size: cover;
   background-position: center bottom;
   background-repeat: no-repeat;
