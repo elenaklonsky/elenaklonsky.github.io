@@ -57,10 +57,10 @@ body::before {
   inset: 0;
   z-index: -1;
   background: url("images/paper.png");
-  background-size: 200px;        /* fine tile, good over the photo */
-  background-repeat: repeat;
+  background-size: cover;        /* fine tile, good over the photo */
+  background-repeat: no-repeat;
   mix-blend-mode: soft-light;
-  opacity: 0.2;
+  opacity: 0.3;
   pointer-events: none;
 }
 
@@ -91,7 +91,7 @@ body:not(.home)::before {
 
 /* outer card */
 .card {
-  width: min(520px, 100%);
+  width: min(640px, 100%);
   background: var(--paper);
   border: 1px solid var(--ink);
   padding: 36px 24px 28px;
@@ -100,6 +100,18 @@ body:not(.home)::before {
     0 0 0 0.35px rgba(41, 36, 30, 0.72),
     3px 3px 0 rgba(41, 36, 30, 0.22),
     6px 8px 16px rgba(41, 36, 30, 0.12);
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: url("images/paper.png");
+  background-size: 120px;
+  mix-blend-mode: multiply;
+  opacity: 0.12;
+  pointer-events: none;
 }
 
 /* single inner box */
@@ -209,7 +221,7 @@ h1 {
 }
 
 .footer-links {
-  margin-top: 1.3rem;
+  margin-top: .7rem;
   text-align: center;
   font-family: "Futura", "Futura PT", "Century Gothic", sans-serif;
   font-style: italic;
@@ -227,7 +239,7 @@ h1 {
 }
 .footer-links .dot {
   color: var(--mahogany);
-  margin: 0 0.35em;
+  margin: 0 0.55em;
 }
 
 @media (max-width: 560px) {
